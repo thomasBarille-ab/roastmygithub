@@ -3,22 +3,10 @@ import { NextRequest } from "next/server";
 
 const GITHUB_USERNAME_RE = /^[a-zA-Z0-9]([a-zA-Z0-9-]{0,37}[a-zA-Z0-9])?$/;
 
-function sanitizeText(value: string | null, fallback: string, maxLength: number): string {
-  if (!value) return fallback;
-  return value.replace(/[<>"'&]/g, "").slice(0, maxLength);
-}
-
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
-
-  const rawUsername = searchParams.get("username") ?? "";
-  const username = GITHUB_USERNAME_RE.test(rawUsername) ? rawUsername : "unknown";
-
-  const developerType = sanitizeText(searchParams.get("type"), "Mystery Developer", 60);
-  const emoji = sanitizeText(searchParams.get("emoji"), "🔥", 4);
-  const score = sanitizeText(searchParams.get("score"), "?", 2);
-  const scoreLabel = sanitizeText(searchParams.get("label"), "Unknown", 40);
-  const avatarUrl = `https://github.com/${username}.png`;
+  const raw = searchParams.get("username") ?? "";
+  const username = GITHUB_USERNAME_RE.test(raw) ? raw : "unknown";
 
   return new ImageResponse(
     (
@@ -32,8 +20,7 @@ export async function GET(request: NextRequest) {
           alignItems: "center",
           justifyContent: "center",
           fontFamily: "sans-serif",
-          gap: "24px",
-          padding: "48px",
+          gap: "28px",
         }}
       >
         <div
@@ -41,59 +28,35 @@ export async function GET(request: NextRequest) {
             background: "#161b22",
             border: "1px solid #30363d",
             borderRadius: "24px",
-            padding: "8px 20px",
+            padding: "10px 24px",
             color: "#8b949e",
-            fontSize: "14px",
+            fontSize: "16px",
             display: "flex",
-            alignItems: "center",
             gap: "8px",
           }}
         >
-          🔥 roastmygithub.dev
+          🔥 roastmygithub
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
           <img
-            src={avatarUrl}
-            width={72}
-            height={72}
+            src={`https://github.com/${username}.png`}
+            width={80}
+            height={80}
             style={{ borderRadius: "50%", border: "2px solid #30363d" }}
             alt=""
           />
-          <span style={{ color: "#8b949e", fontSize: "22px" }}>@{username}</span>
+          <span style={{ color: "#8b949e", fontSize: "28px" }}>@{username}</span>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
-          <span style={{ fontSize: "72px" }}>{emoji}</span>
-          <span
-            style={{
-              color: "#ffffff",
-              fontSize: "36px",
-              fontWeight: "bold",
-              textAlign: "center",
-              maxWidth: "900px",
-            }}
-          >
-            {developerType}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
+          <span style={{ fontSize: "80px" }}>🔥</span>
+          <span style={{ color: "#ffffff", fontSize: "42px", fontWeight: "bold" }}>
+            just got roasted
           </span>
-        </div>
-
-        <div
-          style={{
-            background: "#161b22",
-            border: "1px solid #30363d",
-            borderRadius: "999px",
-            padding: "12px 28px",
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-          }}
-        >
-          <span style={{ color: "#fbbf24", fontSize: "28px", fontWeight: "bold" }}>
-            {score}/10
+          <span style={{ color: "#8b949e", fontSize: "20px" }}>
+            Find out your developer type →
           </span>
-          <span style={{ color: "#8b949e", fontSize: "16px" }}>GitHub Rizz Score</span>
-          <span style={{ color: "#8b949e", fontSize: "14px" }}>— {scoreLabel}</span>
         </div>
       </div>
     ),
