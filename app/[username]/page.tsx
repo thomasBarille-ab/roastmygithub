@@ -7,7 +7,7 @@ import { ShareButton } from "@/components/ShareButton";
 import type { Metadata } from "next";
 
 const GITHUB_USERNAME_RE = /^[a-zA-Z0-9]([a-zA-Z0-9-]{0,37}[a-zA-Z0-9])?$/;
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://roast-my-github-snowy.vercel.app";
+const BASE_URL = (process.env.NEXT_PUBLIC_BASE_URL ?? "https://roast-my-github-snowy.vercel.app").replace(/^﻿/, "");
 
 type Props = { params: Promise<{ username: string }> };
 
