@@ -46,6 +46,14 @@ export default async function RoastPage({ params }: Props) {
   const { profile, stats } = githubData;
   const paragraphs = roast.roast.split(/\n+/).filter(Boolean);
 
+  const ogUrl = `${BASE_URL}/api/og?${new URLSearchParams({
+    username: profile.login,
+    type: roast.developerType,
+    emoji: roast.emoji,
+    score: String(roast.score),
+    label: roast.scoreLabel,
+  }).toString()}`;
+
   return (
     <main className="relative min-h-screen bg-[#0a0e1a] px-4 py-12 overflow-hidden">
       <Snow />
@@ -103,7 +111,7 @@ export default async function RoastPage({ params }: Props) {
 
         <div className="flex flex-col items-center gap-3">
           <p className="text-slate-500 text-sm">Think you can handle the truth? Share it.</p>
-          <ShareButton username={profile.login} developerType={roast.developerType} score={roast.score} />
+          <ShareButton username={profile.login} developerType={roast.developerType} score={roast.score} ogUrl={ogUrl} />
         </div>
 
         <p className="text-center text-slate-600 text-xs pb-4">
