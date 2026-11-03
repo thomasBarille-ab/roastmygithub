@@ -46,8 +46,6 @@ export default function HomePage() {
         <div className="flex items-center justify-center gap-6 text-xs text-slate-500">
           <span>🔓 Public profiles only</span>
           <span>·</span>
-          <span>🎁 Free</span>
-          <span>·</span>
           <span>💀 No mercy</span>
         </div>
       </div>
