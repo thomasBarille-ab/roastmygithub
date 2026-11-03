@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Snow } from "@/components/Snow";
 import { fetchGitHubData } from "@/lib/github";
 import { roastGitHubProfile } from "@/lib/claude";
 import { ShareButton } from "@/components/ShareButton";
@@ -46,11 +47,12 @@ export default async function RoastPage({ params }: Props) {
   const paragraphs = roast.roast.split(/\n+/).filter(Boolean);
 
   return (
-    <main className="min-h-screen bg-[#0d1117] px-4 py-12">
-      <div className="max-w-2xl mx-auto space-y-8">
+    <main className="relative min-h-screen bg-[#0a0e1a] px-4 py-12 overflow-hidden">
+      <Snow />
+      <div className="relative z-10 max-w-2xl mx-auto space-y-8">
 
         <div className="text-center space-y-4">
-          <Link href="/" className="text-[#8b949e] text-sm hover:text-white transition-colors">
+          <Link href="/" className="text-slate-500 text-sm hover:text-white transition-colors">
             ← Roast another profile
           </Link>
           <div className="flex items-center justify-center gap-3 mt-4">
@@ -58,23 +60,23 @@ export default async function RoastPage({ params }: Props) {
             <img
               src={profile.avatar_url}
               alt={profile.login}
-              className="w-12 h-12 rounded-full border border-[#30363d]"
+              className="w-12 h-12 rounded-full border-2 border-[#c41e3a]"
             />
             <div className="text-left">
               <div className="text-white font-semibold">{profile.name ?? profile.login}</div>
-              <div className="text-[#8b949e] text-sm">@{profile.login}</div>
+              <div className="text-slate-400 text-sm">@{profile.login}</div>
             </div>
           </div>
         </div>
 
-        <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-6 text-center space-y-3">
+        <div className="bg-[#0f172a] border border-[#1e3a5f] rounded-xl p-6 text-center space-y-3">
           <div className="text-5xl">{roast.emoji}</div>
           <h1 className="text-2xl font-bold text-white">{roast.developerType}</h1>
-          <p className="text-[#8b949e]">{roast.typeDescription}</p>
-          <div className="inline-flex items-center gap-2 bg-[#0d1117] border border-[#30363d] rounded-full px-4 py-1.5">
+          <p className="text-slate-400">{roast.typeDescription}</p>
+          <div className="inline-flex items-center gap-2 bg-[#0a0e1a] border border-[#1e3a5f] rounded-full px-4 py-1.5">
             <span className="text-yellow-400 font-bold text-lg">{roast.score}/10</span>
-            <span className="text-[#8b949e] text-sm">GitHub Rizz Score</span>
-            <span className="text-[#8b949e] text-xs">— {roast.scoreLabel}</span>
+            <span className="text-slate-400 text-sm">GitHub Rizz Score</span>
+            <span className="text-slate-500 text-xs">— {roast.scoreLabel}</span>
           </div>
         </div>
 
@@ -85,30 +87,30 @@ export default async function RoastPage({ params }: Props) {
             { label: "Abandoned", value: stats.abandonedRepos },
             { label: "Followers", value: profile.followers },
           ].map(({ label, value }) => (
-            <div key={label} className="bg-[#161b22] border border-[#30363d] rounded-lg p-3 text-center">
+            <div key={label} className="bg-[#0f172a] border border-[#1e3a5f] rounded-lg p-3 text-center">
               <div className="text-white font-bold text-lg">{value}</div>
-              <div className="text-[#8b949e] text-xs">{label}</div>
+              <div className="text-slate-500 text-xs">{label}</div>
             </div>
           ))}
         </div>
 
-        <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-6 space-y-4">
-          <h2 className="text-[#f0883e] font-semibold text-sm uppercase tracking-wider">🔥 The Roast</h2>
+        <div className="bg-[#0f172a] border border-[#1e3a5f] rounded-xl p-6 space-y-4">
+          <h2 className="text-[#c41e3a] font-semibold text-sm uppercase tracking-wider">🎄 The Roast</h2>
           {paragraphs.map((p, i) => (
-            <p key={i} className="text-[#c9d1d9] leading-relaxed">{p}</p>
+            <p key={i} className="text-slate-300 leading-relaxed">{p}</p>
           ))}
         </div>
 
         <div className="flex flex-col items-center gap-3">
-          <p className="text-[#8b949e] text-sm">Think you can handle the truth? Share it.</p>
+          <p className="text-slate-500 text-sm">Think you can handle the truth? Share it.</p>
           <ShareButton username={profile.login} developerType={roast.developerType} score={roast.score} />
         </div>
 
-        <p className="text-center text-[#8b949e] text-xs pb-4">
+        <p className="text-center text-slate-600 text-xs pb-4">
           Built by{" "}
-          <a href="https://github.com/thomasBarille-ab" target="_blank" rel="noopener noreferrer" className="text-[#58a6ff] hover:underline">
+          <a href="https://github.com/thomasBarille-ab" target="_blank" rel="noopener noreferrer" className="text-[#c41e3a] hover:underline">
             @thomasBarille-ab
-          </a>{" "}
+          </a>
         </p>
       </div>
     </main>

@@ -1,4 +1,5 @@
 import { roastAction } from "./actions";
+import { Snow } from "@/components/Snow";
 
 export const metadata = {
   title: "Roast My GitHub — Get brutally honest feedback on your profile",
@@ -8,14 +9,16 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#0d1117] flex flex-col items-center justify-center px-4">
-      <div className="max-w-xl w-full text-center space-y-8">
+    <main className="relative min-h-screen bg-[#0a0e1a] flex flex-col items-center justify-center px-4 overflow-hidden">
+      <Snow />
+
+      <div className="relative z-10 max-w-xl w-full text-center space-y-8">
         <div className="space-y-3">
-          <div className="text-6xl">🔥</div>
+          <div className="text-6xl">🎄</div>
           <h1 className="text-4xl font-bold text-white tracking-tight">
             Roast My GitHub
           </h1>
-          <p className="text-[#8b949e] text-lg">
+          <p className="text-slate-400 text-lg">
             Get a brutally honest roast of your GitHub profile.
             <br />
             Share the pain. Embrace the truth.
@@ -29,31 +32,33 @@ export default function HomePage() {
               name="username"
               placeholder="github.com/your-username or just username"
               required
-              className="flex-1 bg-[#161b22] border border-[#30363d] text-white placeholder-[#8b949e] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#58a6ff] transition-colors"
+              className="flex-1 bg-[#0f172a] border border-[#1e3a5f] text-white placeholder-slate-500 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#c41e3a] transition-colors"
             />
             <button
               type="submit"
-              className="bg-[#238636] hover:bg-[#2ea043] text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors whitespace-nowrap cursor-pointer"
+              className="bg-[#c41e3a] hover:bg-[#a01830] text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors whitespace-nowrap cursor-pointer"
             >
-              Roast me 🔥
+              Roast me 🎅
             </button>
           </div>
         </form>
 
-        <div className="flex items-center justify-center gap-6 text-xs text-[#8b949e]">
+        <div className="flex items-center justify-center gap-6 text-xs text-slate-500">
           <span>🔓 Public profiles only</span>
+          <span>·</span>
+          <span>🎁 Free</span>
           <span>·</span>
           <span>💀 No mercy</span>
         </div>
       </div>
 
-      <footer className="absolute bottom-6 text-[#8b949e] text-xs">
+      <footer className="absolute bottom-6 z-10 text-slate-500 text-xs">
         Built by{" "}
         <a
           href="https://github.com/thomasBarille-ab"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#58a6ff] hover:underline"
+          className="text-[#c41e3a] hover:underline"
         >
           @thomasBarille-ab
         </a>
