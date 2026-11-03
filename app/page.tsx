@@ -50,12 +50,12 @@ export default function HomePage() {
       <footer className="absolute bottom-6 text-[#8b949e] text-xs">
         Built by{" "}
         <a
-          href="https://github.com/thomasbarillot"
+          href="https://github.com/thomasBarille-ab"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[#58a6ff] hover:underline"
         >
-          @thomasbarillot
+          @thomasBarille-ab
         </a>
       </footer>
     </main>
