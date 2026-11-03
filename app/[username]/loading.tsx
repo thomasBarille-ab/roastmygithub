@@ -5,7 +5,7 @@ export default function LoadingPage() {
         <div className="text-5xl animate-bounce">🔥</div>
         <h2 className="text-2xl font-bold text-white">Roasting in progress...</h2>
         <p className="text-[#8b949e]">
-          Claude is carefully reading your commits and judging your life choices.
+          Carefully reading your commits and judging your life choices.
         </p>
         <div className="flex justify-center gap-1.5 pt-2">
           {[0, 1, 2].map((i) => (

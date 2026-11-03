@@ -8,7 +8,7 @@ type ShareButtonProps = {
 
 export function ShareButton({ username, developerType, score }: ShareButtonProps) {
   const url = `https://roastmygithub.dev/${username}`;
-  const text = `I just got roasted by AI 🔥\n\nVerdict: "${developerType}" — ${score}/10 GitHub Rizz Score\n\nFind out yours 👇`;
+  const text = `I just got roasted 🔥\n\nVerdict: "${developerType}" — ${score}/10 GitHub Rizz Score\n\nFind out yours 👇`;
 
   const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
 

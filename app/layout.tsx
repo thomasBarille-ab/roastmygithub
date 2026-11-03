@@ -6,9 +6,9 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Roast My GitHub — Brutal AI feedback on your dev profile",
+  title: "Roast My GitHub — Brutal feedback on your dev profile",
   description:
-    "Get a savage, AI-powered roast of your GitHub profile. Find out your developer type, score, and what your commit history says about your soul.",
+    "Get a savage roast of your GitHub profile. Find out your developer type, score, and what your commit history says about your soul.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,9 +1,9 @@
 import { roastAction } from "./actions";
 
 export const metadata = {
-  title: "Roast My GitHub — Get brutally honest AI feedback on your profile",
+  title: "Roast My GitHub — Get brutally honest feedback on your profile",
   description:
-    "Paste your GitHub username and get a savage, AI-powered roast of your developer profile. Share the pain.",
+    "Paste your GitHub username and get a savage roast of your developer profile. Share the pain.",
 };
 
 export default function HomePage() {
@@ -16,7 +16,7 @@ export default function HomePage() {
             Roast My GitHub
           </h1>
           <p className="text-[#8b949e] text-lg">
-            Get a brutally honest AI-powered roast of your GitHub profile.
+            Get a brutally honest roast of your GitHub profile.
             <br />
             Share the pain. Embrace the truth.
           </p>
@@ -41,8 +41,6 @@ export default function HomePage() {
         </form>
 
         <div className="flex items-center justify-center gap-6 text-xs text-[#8b949e]">
-          <span>⚡ Powered by Claude AI</span>
-          <span>·</span>
           <span>🔓 Public profiles only</span>
           <span>·</span>
           <span>💀 No mercy</span>

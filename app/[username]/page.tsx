@@ -15,16 +15,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ogUrl = `${BASE_URL}/api/og?username=${encodeURIComponent(username)}`;
   return {
     title: `${username}'s GitHub Roast 🔥`,
-    description: `See how brutal AI judged ${username}'s GitHub profile. Share the pain.`,
+    description: `See how ${username}'s GitHub profile got roasted. Share the pain.`,
     openGraph: {
       title: `${username} just got roasted 🔥`,
-      description: `See how brutal AI judged ${username}'s GitHub profile.`,
+      description: `See how ${username}'s GitHub profile got roasted.`,
       images: [{ url: ogUrl, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${username} just got roasted 🔥`,
-      description: `See how brutal AI judged ${username}'s GitHub profile.`,
+      description: `See how ${username}'s GitHub profile got roasted.`,
       images: [ogUrl],
     },
   };
@@ -109,7 +109,6 @@ export default async function RoastPage({ params }: Props) {
           <a href="https://github.com/thomasBarille-ab" target="_blank" rel="noopener noreferrer" className="text-[#58a6ff] hover:underline">
             @thomasBarille-ab
           </a>{" "}
-          · Powered by Claude AI
         </p>
       </div>
     </main>
