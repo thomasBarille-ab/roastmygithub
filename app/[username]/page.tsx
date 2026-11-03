@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { connection } from "next/server";
 import { getRoast } from "@/lib/roast";
 import { ShareButton } from "@/components/ShareButton";
 import type { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
 
 type Props = { params: Promise<{ username: string }> };
 
@@ -50,8 +51,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function RoastPage({ params }: Props) {
   const { username } = await params;
-
-  await connection();
 
   let data: Awaited<ReturnType<typeof getRoast>>;
   try {
